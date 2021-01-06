@@ -127,6 +127,8 @@ li {
   bottom: 0;
   left: 0;
   right: 0;
+  filter: drop-shadow(0px -5px 5px rgba(0,0,0,0.07));
+  background: #fff;
 }
 button,
 input[type="submit"],
