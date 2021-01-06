@@ -1,0 +1,20 @@
+{
+  "name": "hangs-fm",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Hang with your mates in magical musical worlds",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aarti D'Cruz",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "nib": "^1.1.2",
+    "socket.io": "^3.0.5",
+    "stylus": "^0.54.8"
+  }
+}

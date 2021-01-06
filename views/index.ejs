@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>hangs.fm</title>
+    <link rel='stylesheet' type="text/css" href='stylesheets/style.css' />
+
+    <script src="../../socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  </head>
+  <body>
+    <h1>hangs.fm</h1>
+    <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1031790109&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/maybirdband" title="MAYBIRD" target="_blank" style="color: #cccccc; text-decoration: none;">MAYBIRD</a> · <a href="https://soundcloud.com/maybirdband/sets/modern-psychedelic" title="Modern Psychedelic" target="_blank" style="color: #cccccc; text-decoration: none;">Modern Psychedelic</a></div>
+
+    <div id="chat-box">
+      <div id="messages-container">
+        <ul id="messages"></ul>
+      </div> 
+
+      <div id="bottom-container">
+        <form action="/" method="POST" id="chatForm">
+          <input id="message-input" autocomplete="off" autofocus="on" oninput="isTyping()" placeholder="type something..." /><button id="send"></button>
+        </form>
+        <div id="add-mates">
+          <p>add your mates:</p>
+          <div id="add-mates-link">
+            <p>https://hangs.fm/uuiid</p>
+            <img id="copy-link" src="../images/Link.svg">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+            var socket = io.connect('http://localhost:8080');
+
+            // submit text message without reload/refresh the page
+            $('form').submit(function(e){
+                e.preventDefault(); // prevents page reloading
+                socket.emit('chat_message', $('#message-input').val());
+                $('#message-input').val('');
+                return false;
+            });
+
+            // append the chat text message
+            socket.on('chat_message', function(msg){
+                $('#messages').append($('<li>').html(msg));
+            });
+
+            // append text if someone is online
+            socket.on('is_online', function(username) {
+                $('#messages').append($('<li>').html(username));
+            });
+
+            $( document ).ready(function() {
+                console.log( "ready!" );
+                // ask username
+                var username = prompt('What is your name?');
+                socket.emit('username', username);
+            });
+
+    </script>
+  </body>
+</html>
