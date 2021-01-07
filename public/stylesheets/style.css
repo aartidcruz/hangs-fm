@@ -11,8 +11,9 @@ a {
 #chat-box {
   width: 360px;
   height: 630px;
-  position: relative;
-  top: 0;
+  position: absolute;
+  top: 50%;
+  right: 40px;
   background: #fff;
   border: 2px solid #000;
   -webkit-box-sizing: border-box;
@@ -20,6 +21,11 @@ a {
   box-sizing: border-box;
   margin: 0 auto;
   filter: drop-shadow(4px 4px 0px rgba(0,0,0,0.4));
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
 }
 ul,
 li {
@@ -140,4 +146,27 @@ input[type="reset"] {
   font: inherit;
   cursor: pointer;
   outline: inherit;
+}
+#video-background {
+  background: #000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -99;
+}
+#video-foreground,
+#video-background iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 150%;
+  pointer-events: none;
 }

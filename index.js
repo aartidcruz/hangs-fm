@@ -23,7 +23,7 @@ app.use(stylus.middleware({
 
 app.use(express.static(__dirname + '/public'));
 
-io.sockets.on('connection', function(socket) {
+io.sockets.on('connection', socket => {
     socket.on('username', function(username) {
         socket.username = username;
         io.emit('is_online', '<p id="user-stat">' + socket.username + ' joined the hang 😎</p>');
@@ -36,6 +36,10 @@ io.sockets.on('connection', function(socket) {
     socket.on('chat_message', function(message) {
         io.emit('chat_message', '<strong>' + socket.username + '</strong>: ' + message);
     });
+
+    socket.join('some room');
+    io.to('some room').emit('some event');
+
 
 });
 

@@ -1,5 +1,6 @@
 // use nib
 @import 'nib'
+// fonts
 @import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
@@ -17,12 +18,13 @@ a
 
 #chat-box
   size 360px 630px
-  relative top
+  absolute top 50% right 40px
   background #FFFFFF
   border 2px solid #000000
   box-sizing border-box
   margin 0 auto
   filter drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.4))
+  transform translate(0, -50%)
 
 ul , li
   list-style-type none
@@ -129,3 +131,17 @@ input[type="reset"]
   font inherit
   cursor pointer
   outline inherit
+
+
+  // video
+#video-background
+  background: #000
+  fixed top 0 right 0 bottom 0 left 0
+  z-index -99
+
+#video-foreground,
+#video-background iframe
+  absolute top 50% left 50%
+  transform translate(-50%, -50%)
+  size 100% 150%
+  pointer-events none

@@ -5,7 +5,7 @@
   "description": "Hang with your mates in magical musical worlds",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Aarti D'Cruz",
@@ -16,5 +16,8 @@
     "nib": "^1.1.2",
     "socket.io": "^3.0.5",
     "stylus": "^0.54.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
