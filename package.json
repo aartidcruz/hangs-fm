@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "description": "Hang with your mates in magical musical worlds",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
   },
